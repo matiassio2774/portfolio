@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.work:hover {
+  cursor: pointer;
+  color: #b249f8;
+  animation: colorChange .2s ease-in-out;
+}
+
+@keyframes colorChange {
+  0% {
+    color: white; /* El color inicial antes del hover */
+  }
+  100% {
+    color: #b249f8; /* El color deseado al hacer hover */
+  }
+}
