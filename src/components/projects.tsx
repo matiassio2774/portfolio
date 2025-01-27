@@ -1,9 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 import { motion } from "framer-motion";
 
-import { Work } from "./work";
-
-export const Experience = () => {
+export const Projects = () => {
   const work = [
     {
       date: "Jan 2023 - Current",
@@ -44,13 +42,8 @@ export const Experience = () => {
             ease: "easeInOut",
           }}
         >
-          Experience&nbsp;
+          Projects&nbsp;
         </motion.span>
-        <ol className="relative border-gray-200 border-s dark:border-gray-700">
-          {work.map((job, index) => (
-            <Work key={index} {...job} />
-          ))}
-        </ol>
       </div>
     </Fragment>
   );

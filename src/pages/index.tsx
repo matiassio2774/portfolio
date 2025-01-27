@@ -6,6 +6,7 @@ import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import { Experience } from "@/components/experience";
 import { Skills } from "@/components/skills";
+import { Projects } from "@/components/projects";
 
 export default function IndexPage() {
   const text = "frontend developer";
@@ -71,9 +72,12 @@ export default function IndexPage() {
           <br />
           <br />
           <br />
-          <div className="flex flex-col items-center justify-center gap-32 lg:flex-row">
+          <div className="flex flex-col items-center justify-center gap-20 lg:items-start lg:flex-row">
             <Experience />
             <Skills />
+          </div>
+          <div className="flex flex-col items-center justify-center gap-20 mt-20 lg:items-start lg:flex-row">
+            <Projects />
           </div>
           <br />
           <br />

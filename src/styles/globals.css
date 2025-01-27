@@ -2,17 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-.work:hover {
-  cursor: pointer;
-  color: #b249f8;
-  animation: colorChange .2s ease-in-out;
-}
 
-@keyframes colorChange {
+@keyframes gradientAnimation {
   0% {
-    color: white; /* El color inicial antes del hover */
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 0 100%;
   }
   100% {
-    color: #b249f8; /* El color deseado al hacer hover */
+    background-position: 100% 0;
   }
+}
+
+.bg-gradient-to-r {
+  background-size: 400% 400%;
+  animation: gradientAnimation 5s ease infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+  zoom: 110%;
 }
