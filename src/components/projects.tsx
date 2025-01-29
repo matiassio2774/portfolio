@@ -3,56 +3,64 @@ import { motion } from "framer-motion";
 import { Card, CardFooter } from "@heroui/card";
 import { Link } from "@heroui/link";
 
-import { GithubIcon, SearchIcon } from "./icons";
+import { GithubIcon } from "./icons";
 
 export const Projects = () => {
   const projects = [
     {
       label: "project 1",
-      link: "https://www.bewise.com.es/es",
-      github: "",
-      description: "test description",
-      img: "",
-      tech: ["angular", "node"],
-    },
-    {
-      label: "project 1",
-      link: "https://www.bewise.com.es/es",
-      github: "",
-      description: "test description",
-      img: "",
+      link: "https://color-snap-sage.vercel.app",
+      github: "https://github.com/matiassio2774/ColorSnap",
+      description: "Image color picker 🖍️",
+      img: "colorsnap",
       tech: ["angular", "tailwind"],
     },
     {
       label: "project 1",
-      link: "https://www.bewise.com.es/es",
-      github: "",
-      description: "test description",
-      img: "",
+      link: "https://color-snap-sage.vercel.app",
+      github: "https://github.com/matiassio2774/ColorSnap",
+      description: "Image color picker 🖍️",
+      img: "colorsnap",
       tech: ["angular", "tailwind"],
     },
     {
       label: "project 1",
-      link: "https://www.bewise.com.es/es",
-      github: "",
-      description: "test description",
-      img: "",
+      link: "https://color-snap-sage.vercel.app",
+      github: "https://github.com/matiassio2774/ColorSnap",
+      description: "Image color picker 🖍️",
+      img: "colorsnap",
       tech: ["angular", "tailwind"],
     },
     {
       label: "project 1",
-      link: "https://www.bewise.com.es/es",
-      github: "",
-      description: "test description",
-      img: "",
+      link: "https://color-snap-sage.vercel.app",
+      github: "https://github.com/matiassio2774/ColorSnap",
+      description: "Image color picker 🖍️",
+      img: "colorsnap",
       tech: ["angular", "tailwind"],
     },
     {
       label: "project 1",
-      link: "https://www.bewise.com.es/es",
-      github: "",
-      description: "test description",
-      img: "",
+      link: "https://color-snap-sage.vercel.app",
+      github: "https://github.com/matiassio2774/ColorSnap",
+      description: "Image color picker 🖍️",
+      img: "colorsnap",
+      tech: ["angular", "tailwind"],
+    },
+    {
+      label: "project 1",
+      link: "https://color-snap-sage.vercel.app",
+      github: "https://github.com/matiassio2774/ColorSnap",
+      description: "Image color picker 🖍️",
+      img: "colorsnap",
+      tech: ["angular", "tailwind"],
+    },
+    {
+      label: "project 1",
+      link: "https://color-snap-sage.vercel.app",
+      github: "https://github.com/matiassio2774/ColorSnap",
+      description: "Image color picker 🖍️",
+      img: "colorsnap",
       tech: ["angular", "tailwind"],
     },
   ];
@@ -82,48 +90,79 @@ export const Projects = () => {
         </motion.span>
         <div className="flex flex-col items-center justify-center w-full gap-10 lg:flex-row lg:flex-wrap">
           {projects.map((project, index) => (
-            <Card
+            <motion.div
               key={index}
-              isFooterBlurred
-              className="h-[300px] col-span-12 sm:col-span-5 lg:min-w-96"
+              className="relative w-full group lg:w-fit"
+              whileHover={{ scale: 1.02 }}
             >
-              <img
-                alt="Card example background"
-                className="z-0 object-cover w-full h-full scale-125 -translate-y-6"
-                src="/card-example-2.jpeg"
-              />
-              <CardFooter className="absolute bottom-0 z-10 justify-between bg-white/5">
-                <div className="flex items-center justify-center gap-5">
-                  {project.tech.map((tech, index) => (
-                    <motion.div
-                      key={index}
-                      className="flex items-center justify-center"
-                      whileHover={{
-                        scale: 1.2,
-                        rotate: 15,
-                        y: -5,
-                        transition: { type: "spring", stiffness: 300 },
-                      }}
+              <Card className="relative h-[300px] col-span-12 sm:col-span-5 lg:min-w-96 overflow-hidden bg-black/10 rounded-xl">
+                <motion.div
+                  animate={{
+                    borderColor: [
+                      "rgba(255, 255, 255, 0.1)",
+                      "rgba(255, 255, 255, 0.3)",
+                      "rgba(255, 255, 255, 0.1)",
+                    ],
+                  }}
+                  className="absolute inset-0 border-2 border-transparent rounded-xl group-hover:border-white/60"
+                  style={{ borderColor: "rgba(255, 255, 255, 0.1)" }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+
+                <motion.img
+                  alt="Card example background"
+                  className="absolute inset-0 object-cover w-full h-full transition duration-300 group-hover:blur-md"
+                  src={`${project.img}.webp`}
+                />
+
+                <motion.div className="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 opacity-0 bg-black/40 group-hover:opacity-100">
+                  <Link
+                    isExternal
+                    className="px-4 py-2 mb-2 font-semibold text-white transition bg-orange-500 rounded-lg hover:bg-orange-600"
+                    href={project.link}
+                  >
+                    Demo
+                  </Link>
+                  {project.github && (
+                    <Link
+                      isExternal
+                      className="px-2 py-2 text-white transition bg-gray-700 rounded-lg hover:bg-gray-800"
+                      href={project.github}
                     >
-                      <img
+                      <GithubIcon className="text-white" />
+                    </Link>
+                  )}
+                </motion.div>
+                <CardFooter className="absolute bottom-0 z-10 justify-between bg-white/10 backdrop-blur-md">
+                  <div className="flex items-center justify-center gap-5">
+                    {project.tech.map((tech, index) => (
+                      <motion.div
                         key={index}
-                        alt={tech}
-                        className="w-6 h-6"
-                        src={`/icons/${tech}.svg`}
-                      />
-                    </motion.div>
-                  ))}
-                </div>
-                <div className="flex items-center justify-center gap-3">
-                  <Link isExternal href={project.github} title="GitHub">
-                    <GithubIcon className="text-white" />
-                  </Link>
-                  <Link isExternal href={project.link} title="web">
-                    <SearchIcon className="text-white" />
-                  </Link>
-                </div>
-              </CardFooter>
-            </Card>
+                        className="flex items-center justify-center"
+                        whileHover={{
+                          scale: 1.2,
+                          rotate: 15,
+                          y: -5,
+                          transition: { type: "spring", stiffness: 300 },
+                        }}
+                      >
+                        <img
+                          key={index}
+                          alt={tech}
+                          className="w-6 h-6"
+                          src={`/icons/${tech}.svg`}
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                  <span className="font-semibold">{project.description}</span>
+                </CardFooter>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>

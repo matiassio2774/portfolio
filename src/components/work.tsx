@@ -37,29 +37,34 @@ export const Work = ({ area, company, date, description, link }) => {
           <span className="text-gray-500">{date}</span>
         )}
       </time>
-      <h3 className="text-base font-normal text-gray-900 dark:text-white ">
-        {area} at {""}
+      <h3 className="text-base font-normal text-gray-900 dark:text-white">
+        {area} at{" "}
         <motion.a
           animate={{
-            textShadow: [
-              "0 0 5px rgba(138, 43, 226, 1)",
-              "0 0 25px rgba(138, 43, 226, 0.2)",
-              "0 0 5px rgba(138, 43, 226, 1)",
-            ],
+            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
           }}
           className="font-bold text-cyan-200 work"
           href={link}
           rel="noopener noreferrer"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff)",
+            backgroundSize: "200% auto",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            display: "inline-block",
+          }}
           target="_blank"
           transition={{
-            duration: 1,
+            duration: 3,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: "linear",
           }}
         >
           {company}
         </motion.a>
       </h3>
+
       <p className="mb-4 text-sm font-light text-gray-500 dark:text-gray-400">
         {description}
       </p>

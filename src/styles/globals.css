@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 4px; /* Ancho del scroll */
+}
+
+
+/* Track (fondo del scrollbar) */
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Color de fondo */
+  border-radius: 10px;
+}
+
+/* Handle (la barra que se mueve) */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #350033, #3527ff); /* Degradado */
+  border-radius: 10px;
+}
+
+/* Hover en el handle */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #350033, #3527ff);
+}
 
 @keyframes gradientAnimation {
   0% {
@@ -23,4 +44,23 @@
 html {
   scroll-behavior: smooth;
   zoom: 110%;
+}
+
+.noselect {
+  transition: .3s all ease-in-out;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.noselect {
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.noselect:hover {
+  text-shadow: 0px 0px 6px var(--text-glow, rgba(255, 255, 255, 0.7));
 }
