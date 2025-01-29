@@ -25,33 +25,39 @@ export const Experience = () => {
 
   return (
     <Fragment>
-      <div className="flex flex-col items-center justify-center sm:max-w-96">
-        <motion.span
-          animate={{
-            textShadow: [
-              "0 0 0px rgba(255, 255, 255, 0)",
-              "0 0 2px rgba(255, 255, 0, 0.8)",
-              "0 0 5px rgba(255, 255, 0, 0.6)",
-              "0 0 2px rgba(255, 255, 0, 0.8)",
-              "0 0 0px rgba(255, 255, 255, 0)",
-            ],
-            color: ["#ffffff", "#ffe8c2", "#ffffff"],
-          }}
-          className="mb-6 text-2xl font-semibold lg:text-2xl"
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          Experience&nbsp;
-        </motion.span>
-        <ol className="relative border-gray-200 border-s dark:border-gray-700">
-          {work.map((job, index) => (
-            <Work key={index} {...job} />
-          ))}
-        </ol>
-      </div>
+      <motion.div
+        animate={{ opacity: 1, y: 0 }} // Termina completamente visible y en su posición normal
+        initial={{ opacity: 0, y: -20 }} // Comienza invisible y ligeramente arriba
+        transition={{ duration: 1 }} // Duración de la animación
+      >
+        <div className="flex flex-col items-center justify-center sm:max-w-96">
+          <motion.span
+            animate={{
+              textShadow: [
+                "0 0 0px rgba(255, 255, 255, 0)",
+                "0 0 2px rgba(255, 255, 0, 0.8)",
+                "0 0 5px rgba(255, 255, 0, 0.6)",
+                "0 0 2px rgba(255, 255, 0, 0.8)",
+                "0 0 0px rgba(255, 255, 255, 0)",
+              ],
+              color: ["#ffffff", "#ffe8c2", "#ffffff"],
+            }}
+            className="mb-6 text-2xl font-semibold lg:text-2xl"
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            Experience&nbsp;
+          </motion.span>
+          <ol className="relative border-gray-200 border-s dark:border-gray-700">
+            {work.map((job, index) => (
+              <Work key={index} {...job} />
+            ))}
+          </ol>
+        </div>
+      </motion.div>
     </Fragment>
   );
 };

@@ -45,7 +45,12 @@ export default function IndexPage() {
           <br />
           <br />
           <br />
-          <div>
+          <br />
+          <motion.div
+            animate={{ opacity: 1, x: 0 }} // Se vuelve visible y se mueve a la posición original
+            initial={{ opacity: 0, x: -100 }} // Empieza invisible y a la izquierda
+            transition={{ duration: 0.6 }} // Duración de la animación
+          >
             <span
               className={title({
                 class: "text-2xl font-thin opacity-90 lg:text-3xl",
@@ -68,7 +73,9 @@ export default function IndexPage() {
             >
               and functional web experiences&nbsp;
             </span>
-          </div>
+          </motion.div>
+          <br />
+          <br />
           <br />
           <br />
           <br />
@@ -76,7 +83,7 @@ export default function IndexPage() {
             <Experience />
             <Skills />
           </div>
-          <div className="flex flex-col items-center justify-center gap-20 mt-20 lg:items-start lg:flex-row">
+          <div className="flex flex-col items-center justify-center w-full gap-20 mt-20 lg:items-start lg:flex-row">
             <Projects />
           </div>
           <br />
