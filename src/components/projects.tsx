@@ -16,52 +16,20 @@ export const Projects = () => {
       tech: ["angular", "tailwind"],
     },
     {
-      label: "project 1",
-      link: "https://color-snap-sage.vercel.app",
-      github: "https://github.com/matiassio2774/ColorSnap",
-      description: "Image color picker 🖍️",
-      img: "colorsnap",
-      tech: ["angular", "tailwind"],
+      label: "project 2",
+      link: "https://frontend-soundcloud-downloader.onrender.com",
+      github: "https://github.com/matiassio2774/soundcloud-downloader",
+      description: "Soundcloud Downloader",
+      img: "sc",
+      tech: ["react", "node", "sql", "docker"],
     },
     {
       label: "project 1",
       link: "https://color-snap-sage.vercel.app",
-      github: "https://github.com/matiassio2774/ColorSnap",
-      description: "Image color picker 🖍️",
-      img: "colorsnap",
-      tech: ["angular", "tailwind"],
-    },
-    {
-      label: "project 1",
-      link: "https://color-snap-sage.vercel.app",
-      github: "https://github.com/matiassio2774/ColorSnap",
-      description: "Image color picker 🖍️",
-      img: "colorsnap",
-      tech: ["angular", "tailwind"],
-    },
-    {
-      label: "project 1",
-      link: "https://color-snap-sage.vercel.app",
-      github: "https://github.com/matiassio2774/ColorSnap",
-      description: "Image color picker 🖍️",
-      img: "colorsnap",
-      tech: ["angular", "tailwind"],
-    },
-    {
-      label: "project 1",
-      link: "https://color-snap-sage.vercel.app",
-      github: "https://github.com/matiassio2774/ColorSnap",
-      description: "Image color picker 🖍️",
-      img: "colorsnap",
-      tech: ["angular", "tailwind"],
-    },
-    {
-      label: "project 1",
-      link: "https://color-snap-sage.vercel.app",
-      github: "https://github.com/matiassio2774/ColorSnap",
-      description: "Image color picker 🖍️",
-      img: "colorsnap",
-      tech: ["angular", "tailwind"],
+      github: "https://github.com/matiassio2774/portfolio",
+      description: "Personal portfolio",
+      img: "portfolio",
+      tech: ["react", "tailwind"],
     },
   ];
 
@@ -115,7 +83,8 @@ export const Projects = () => {
 
                 <motion.img
                   alt="Card example background"
-                  className="absolute inset-0 object-cover w-full h-full transition duration-300 group-hover:blur-md"
+                  style={{height: '84%'}}
+                  className="absolute inset-0 object-cover w-full transition duration-300 group-hover:blur-md"
                   src={`${project.img}.webp`}
                 />
 

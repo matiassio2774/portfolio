@@ -19,6 +19,14 @@
       name="viewport"
     />
     <link href="/dev.png" rel="icon" />
+    <script>
+      window.onload = function() {
+        window.scrollTo(0, 0);
+      }
+      if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

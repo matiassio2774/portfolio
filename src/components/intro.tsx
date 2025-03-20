@@ -15,9 +15,9 @@ export const Intro = () => {
     "pink" | "green" | "cyan" | "blue" | "yellow" | "violet"
   >("green");
   const [isClicked, setIsClicked] = useState(false);
-  const [particles, setParticles] = useState([]);
+  const [particles, setParticles] = useState<any[]>([]);
 
-  const handleColorChange = () => {
+  const handleColorChange = (event: React.MouseEvent) => {
     let randomColor: string | any;
 
     do {
@@ -25,53 +25,44 @@ export const Intro = () => {
     } while (randomColor === color);
 
     setColor(randomColor);
-
     setIsClicked(true);
 
     setTimeout(() => setIsClicked(false), 300);
     const spanElement = document.getElementById("bounce-text");
 
     if (spanElement) {
-      spanElement.classList.add("bounce"); // Agregar la clase bounce
-      // Eliminar la clase bounce después de 0.5 segundos (duración del rebote)
+      spanElement.classList.add("bounce");
       setTimeout(() => {
         spanElement.classList.remove("bounce");
       }, 500);
     }
-
-    // Cambiar color aleatorio
-    let newColor: any;
-
-    do {
-      newColor = colors[Math.floor(Math.random() * colors.length)];
-    } while (newColor === color);
-    setColor(newColor);
-
-    // Obtener posición del clic
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = rect.left + rect.width / 2; // Centro del span
-    const y = rect.top;
-
-    setParticles((prev) => [
-      ...prev,
-      { id: Date.now(), x, y, color: newColor }, // ID único
-    ]);
-
-    setTimeout(() => {
-      setParticles((prev) => prev.filter((p: any) => p.id !== Date.now()));
-    }, 1000);
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       const id = Date.now();
+      
+      // Generar partículas flotantes ocasionales
+      if (Math.random() > 0.7) {
+        const newParticle = {
+          id,
+          x: Math.random() * 20,
+          y: 0,
+          size: Math.random() * 3 + 1,
+          color,
+          velocity: {
+            x: (Math.random() - 0.5) * 1,
+            y: -Math.random() * 2 - 1
+          }
+        };
+        
+        setParticles(prev => [...prev, newParticle]);
 
-      setParticles((prev) => [...prev, { id, color }]);
-
-      setTimeout(() => {
-        setParticles((prev) => prev.filter((p) => p.id !== id));
-      }, 1000);
-    }, 1000);
+        setTimeout(() => {
+          setParticles(prev => prev.filter(p => p.id !== id));
+        }, 1500);
+      }
+    }, 600);
 
     return () => clearInterval(interval);
   }, [color]);
@@ -90,20 +81,20 @@ export const Intro = () => {
   };
 
   const charVariants = {
-    hidden: { opacity: 0 },
-    reveal: { opacity: 1 },
+    hidden: { opacity: 0, y: 20 },
+    reveal: { opacity: 1, y: 0 },
   };
 
   return (
     <Fragment>
       <div className="flex flex-col items-start justify-center p-0 m-0 text-lg max-w-fit">
-        <div className="font-thin text-orange-200 ">
+        <div className="font-thin text-orange-200">
           {textChars.map((char, index) => (
             <motion.span
               key={index}
               animate="reveal"
               initial="hidden"
-              transition={{ delay: index * 0.04 }}
+              transition={{ delay: index * 0.04, type: "spring", stiffness: 100 }}
               variants={charVariants}
             >
               {char}
@@ -111,13 +102,22 @@ export const Intro = () => {
           ))}
         </div>
         <div>
-          <span className={title()}>hi, i'm&nbsp;</span>
-          <span className={title({ color: "yellow", class: "font-bold" })}>
+          <span className={title()}>hi, i&apos;m&nbsp;</span>
+          <motion.span 
+            className={title({ color: "yellow", class: "font-bold" })}
+            animate={{ 
+              textShadow: ["0 0 0px rgba(255, 255, 255, 0)", "0 0 8px rgba(255, 176, 70, 0.6)", "0 0 0px rgba(255, 255, 255, 0)"] 
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+          >
             Matías&nbsp;
-          </span>
+          </motion.span>
         </div>
       </div>
-      <br />
       <br />
       <br />
       <br />
@@ -138,7 +138,7 @@ export const Intro = () => {
           className={title({
             color: color,
             class:
-              "font-bold text-2xl italic lg:text-3xl cursor-pointer noselect",
+              "font-bold text-2xl italic lg:text-3xl cursor-pointer noselect bg-gradient-to-r bg-clip-text",
           })}
           id="bounce-text"
           style={
@@ -147,21 +147,39 @@ export const Intro = () => {
             } as React.CSSProperties
           }
           onClick={handleColorChange}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              handleColorChange(e as unknown as React.MouseEvent);
+            }
+          }}
         >
           beautiful&nbsp;
           <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
             {particles.map((particle: any) => (
               <motion.div
                 key={particle.id}
-                animate={{ opacity: 0, y: -30, scale: 1.2 }}
-                className="absolute w-2 h-2 rounded-full"
-                initial={{ opacity: 1, y: 0, scale: 0.8 }}
-                style={{
-                  left: `10rem`,
-                  top: ".2rem",
-                  backgroundColor: particle.color,
+                animate={{ 
+                  opacity: [1, 0.2, 0], 
+                  y: particle.y - 50, 
+                  x: particle.x + (particle.velocity?.x || 0) * 20,
+                  scale: [1, 0.5]
                 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="absolute rounded-full"
+                initial={{ 
+                  opacity: 1, 
+                  x: particle.x, 
+                  y: particle.y, 
+                  scale: 1
+                }}
+                style={{
+                  width: `${particle.size || 2}px`,
+                  height: `${particle.size || 2}px`,
+                  backgroundColor: getShadowColor(particle.color),
+                  boxShadow: `0 0 6px ${getShadowColor(particle.color)}`,
+                }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
               />
             ))}
           </div>
@@ -174,6 +192,21 @@ export const Intro = () => {
           and functional web experiences&nbsp;
         </span>
       </motion.div>
+      
+      <style>{`
+        @keyframes shine {
+          to {
+            background-position: 200% center;
+          }
+        }
+        .bounce {
+          animation: bounce 0.5s ease;
+        }
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+      `}</style>
     </Fragment>
   );
 };
