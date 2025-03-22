@@ -42,7 +42,6 @@ export const Intro = () => {
     const interval = setInterval(() => {
       const id = Date.now();
       
-      // Generar partículas flotantes ocasionales
       if (Math.random() > 0.7) {
         const newParticle = {
           id,

@@ -7,20 +7,18 @@ export const Technology = ({ tech }: any) => {
         <motion.div
           key={index}
           animate={{
-            scale: [1, 1.05, 1], // Pulso de aumento y disminución
+            scale: [1, 1.05, 1],
           }}
-          // Efecto de pulso constante
           transition={{
             duration: 1.5,
-            repeat: Infinity, // Repetir infinitamente
-            repeatType: "reverse", // Reverso para hacer el pulso
+            repeat: Infinity,
+            repeatType: "reverse",
           }}
           className="flex items-center justify-center"
-          // Efecto de rebote en hover
           whileHover={{
             scale: 1.2,
-            rotate: 15, // Rotación suave
-            y: -5, // Leve movimiento hacia arriba
+            rotate: 15,
+            y: -5,
             transition: { type: "spring", stiffness: 300 },
           }}
         >

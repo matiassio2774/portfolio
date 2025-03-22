@@ -26,9 +26,9 @@ export const Experience = () => {
   return (
     <Fragment>
       <motion.div
-        animate={{ opacity: 1, y: 0 }} // Termina completamente visible y en su posición normal
-        initial={{ opacity: 0, y: -20 }} // Comienza invisible y ligeramente arriba
-        transition={{ duration: 1 }} // Duración de la animación
+        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -20 }}
+        transition={{ duration: 1 }}
       >
         <div className="flex flex-col items-center justify-center sm:max-w-96">
           <motion.span

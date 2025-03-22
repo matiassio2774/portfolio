@@ -44,22 +44,17 @@ export const Projects = () => {
     }
   ];
 
-  // Current filter state
   const [activeFilter, setActiveFilter] = useState("all");
-  // Featured project state
   const [featuredProject, setFeaturedProject] = useState<number | null>(null);
   
-  // List of all unique technologies, excluding typescript, css and vue
   const allTechs = Array.from(
     new Set(projects.flatMap(project => project.tech))
   ).filter(tech => !["typescript", "css", "vue"].includes(tech));
 
-  // Filter projects based on selected technology
   const filteredProjects = activeFilter === "all" 
     ? projects 
     : projects.filter(project => project.tech.includes(activeFilter));
   
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -292,7 +287,7 @@ export const Projects = () => {
                           variant="light" 
                           className="text-white/80 hover:text-white"
                           onClick={(e) => {
-                            e.stopPropagation(); // Evitar que el clic en el botón propague al Card
+                            e.stopPropagation();
                             handleShowDetails(project.id);
                           }}
                         >

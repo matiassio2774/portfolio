@@ -4,6 +4,7 @@ import { Experience } from "@/components/experience";
 import { Skills } from "@/components/skills";
 import { Projects } from "@/components/projects";
 import { Intro } from "@/components/intro";
+import { Contact } from "@/components/contact";
 
 export default function IndexPage() {
   useEffect(() => {
@@ -12,6 +13,7 @@ export default function IndexPage() {
 
   return (
     <DefaultLayout>
+      <Contact />
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div className="flex flex-col items-center justify-center text-center">
           <div id="top"></div>
