@@ -185,7 +185,7 @@ export const SearchIcon = (props: IconSvgProps) => (
   </svg>
 );
 
-export const CheckIcon = ({ size, height, width, ...props }) => {
+export const CheckIcon = ({ size, height, width, ...props }: IconSvgProps) => {
   return (
     <svg
       fill="none"
@@ -203,7 +203,7 @@ export const CheckIcon = ({ size, height, width, ...props }) => {
   );
 };
 
-export const LightbulbIcon = ({ size, height, width, ...props }) => {
+export const LightbulbIcon = ({ size, height, width, ...props }: IconSvgProps) => {
   return (
     <svg
       fill="none"

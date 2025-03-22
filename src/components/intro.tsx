@@ -14,10 +14,10 @@ export const Intro = () => {
   const [color, setColor] = useState<
     "pink" | "green" | "cyan" | "blue" | "yellow" | "violet"
   >("green");
-  const [isClicked, setIsClicked] = useState(false);
+  const [, setIsClicked] = useState(false);
   const [particles, setParticles] = useState<any[]>([]);
 
-  const handleColorChange = (event: React.MouseEvent) => {
+  const handleColorChange = () => {
     let randomColor: string | any;
 
     do {
@@ -150,7 +150,7 @@ export const Intro = () => {
           tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
-              handleColorChange(e as unknown as React.MouseEvent);
+              handleColorChange();
             }
           }}
         >
