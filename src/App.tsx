@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import IndexPage from "@/pages/index";
 
 function App() {
+  localStorage.setItem('theme', 'dark');
   return (
     <Routes>
       <Route element={<IndexPage />} path="/" />

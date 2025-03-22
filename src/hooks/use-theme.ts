@@ -26,7 +26,7 @@ export const useTheme = (defaultTheme?: Theme) => {
   }, [theme]);
 
   const _setTheme = (theme: Theme) => {
-    localStorage.setItem(ThemeProps.key, theme);
+    localStorage.setItem(ThemeProps.key, 'dark');
     document.documentElement.classList.remove(
       ThemeProps.light,
       ThemeProps.dark,

@@ -34,7 +34,7 @@ export const Projects = () => {
     {
       id: 3,
       label: "Personal Portfolio",
-      link: "https://matiassio.com",
+      link: "#",
       github: "https://github.com/matiassio2774/portfolio",
       description: "Interactive personal website with advanced animations",
       longDescription: "Professional portfolio with advanced visual effects using Framer Motion and responsive design to showcase my projects and skills.",
