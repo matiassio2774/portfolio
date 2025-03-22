@@ -48,21 +48,26 @@ export const Skills = () => {
             animate={{
               textShadow: [
                 "0 0 0px rgba(255, 255, 255, 0)",
-                "0 0 2px rgba(255, 255, 0, 0.8)",
-                "0 0 5px rgba(255, 255, 0, 0.6)",
-                "0 0 2px rgba(255, 255, 0, 0.8)",
+                "0 0 10px rgba(99, 102, 241, 0.4)",
+                "0 0 20px rgba(99, 102, 241, 0.2)",
+                "0 0 10px rgba(99, 102, 241, 0.4)",
                 "0 0 0px rgba(255, 255, 255, 0)",
               ],
-              color: ["#ffffff", "#ffe8c2", "#ffffff"],
             }}
-            className="mb-6 text-2xl font-semibold lg:text-2xl"
+            className="mb-6 text-2xl font-semibold lg:text-2xl relative inline-block"
             transition={{
               duration: 5,
               repeat: Infinity,
               ease: "easeInOut",
             }}
           >
-            Skills&nbsp;
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-indigo-400 to-gray-200 animate-gradient">Skills</span>
+            <motion.div 
+              className="absolute -bottom-2 left-0 h-0.5 bg-gradient-to-r from-transparent via-indigo-400 to-transparent w-full"
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: "100%", opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            />
           </motion.span>
           <div className="flex flex-col items-start justify-center gap-10 sm:flex-row">
             <div className="flex flex-col items-start justify-center w-full">
